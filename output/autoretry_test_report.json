@@ -1,0 +1,49 @@
+{
+  "timestamp": "2026-02-16T17:33:13.314970",
+  "total_tests": 5,
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "scenario": "Clean Document",
+      "passed": true,
+      "details": {
+        "retry_attempts": 0,
+        "final_decision": "AUTO_ACCEPT",
+        "total_issues": 0
+      }
+    },
+    {
+      "scenario": "V5 Decision Logic",
+      "passed": true,
+      "details": {
+        "fixable_major": "AUTO_RETRY",
+        "nonfixable_major": "ESCALATE"
+      }
+    },
+    {
+      "scenario": "Share Normalization",
+      "passed": true,
+      "details": {
+        "original_sum": 1.1,
+        "fixed_sum": 0.9999999999999999,
+        "fixes_applied": 1
+      }
+    },
+    {
+      "scenario": "Max Retries Limit",
+      "passed": true,
+      "details": {
+        "max_retries": 2
+      }
+    },
+    {
+      "scenario": "Cycle Detection",
+      "passed": true,
+      "details": {
+        "consistent_fingerprints": true,
+        "detects_changes": true
+      }
+    }
+  ]
+}

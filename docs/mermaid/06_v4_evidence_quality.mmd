@@ -1,0 +1,20 @@
+flowchart TD
+    IN([ClassificationOutput + DocumentBundle]) --> BUILD
+
+    BUILD[Build PDF context dict\nFor each segment page range:\nextract text + paragraph_count\nfrom DocumentBundle pages]
+
+    BUILD --> PROMPT[Build enhanced prompt:\nClassificationOutput JSON\n+ Actual PDF text per page]
+
+    PROMPT --> CALL[Gemini API\ntemp=0.0, JSON mode]
+
+    CALL --> TASKS{LLM tasks}
+    TASKS --> T1[Assess evidence quality\nfor all doc types across all segments]
+    TASKS --> T2[VERIFY snippets exist\nin actual PDF text]
+    TASKS --> T3[CHECK anchors present\non claimed pages]
+    TASKS --> T4[FLAG fabricated or\nunverifiable evidence]
+
+    T1 & T2 & T3 & T4 --> ISSUES[Parse JSON issues: V4-xxxx]
+
+    ISSUES --> SCORE[Compute quality score\nBLOCKER=-0.3, MAJOR=-0.15, MINOR=-0.05\nNormalized by total evidence count]
+
+    SCORE --> OUT([issues + quality_score 0.0 to 1.0])

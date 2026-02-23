@@ -1,0 +1,26 @@
+{
+  "agent": "v3_trap_detection",
+  "doc_id": "doc2_6",
+  "timestamp": "2026-02-17T03:14:07.118839",
+  "issues_count": 1,
+  "issues": [
+    {
+      "ig_id": "X2",
+      "issue_id": "V3-0001",
+      "agent": "V3",
+      "severity": "MAJOR",
+      "message": "Pathology Report classified as EMBEDDED_RAW in segment 1 based on 'Immunohistochemistry Results' but the reasoning explicitly states it 'lacks the full 'Classic Triad' for a primary pathology report'. This suggests it's a result mention rather than a structured pathology report document.",
+      "location": {
+        "segment_index": 1,
+        "document_type": "Pathology Report",
+        "field": "presence_level"
+      },
+      "suggested_fix": "Re-evaluate if 'Immunohistochemistry Results' alone, without the 'Classic Triad' (Gross Description, Microscopic Description, Final Diagnosis, pathologist signature), warrants EMBEDDED_RAW classification, or if it should be downgraded to MENTION_ONLY or considered part of the Genomic Report's findings.",
+      "auto_fixable": false
+    }
+  ],
+  "score": null,
+  "metadata": {
+    "traps_triggered": 1
+  }
+}

@@ -1,0 +1,18 @@
+flowchart TD
+    IN([ESCALATE_TO_SME Decision]) --> CHK{decision == ESCALATE_TO_SME?}
+    CHK --> |No| ERR([ValueError: wrong decision type])
+    CHK --> |Yes| FMT
+
+    FMT[_format_issues\nSort by severity: BLOCKER then MAJOR then MINOR\nFormat each issue for human review]
+
+    FMT --> PROD{Production classifier result provided?}
+    PROD --> |Yes| DIFF[Compare dominant_type\nSet production_differs flag]
+    PROD --> |No| SKIP[production_differs = None]
+
+    DIFF & SKIP --> BUILD
+
+    BUILD[Build SMEPacket:\ndoc_id, pdf_filename, pdf_path\nprimary_agent_classification\nv5_decision, total_issues\nissues_summary sorted by severity\nproduction_classification\ndocument_bundle_path\nreview_status = PENDING]
+
+    BUILD --> SAVE[Save to:\noutput/sme_packets/sme_packet_doc_id.json]
+
+    SAVE --> OUT([SMEPacket ready for SME review])

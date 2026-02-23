@@ -1,0 +1,23 @@
+flowchart TD
+    A([SME opens Jupyter Notebook]) --> B[SMEReviewHelper.list_pending_reviews\nScan output/sme_packets/ for status=pending]
+    B --> C[SMEReviewHelper.load_packet\nLoad SMEPacket JSON]
+
+    C --> D[Display in notebook:\nPDF filename and page count\nPrimary classification\nV5 decision and issue count\nIssues sorted by severity]
+
+    D --> E[get_issue_context per issue:\nsegment_info\nclassification_reasoning\nevidence snippets and anchors\nPDF text chunks from DocumentBundle\n2 paragraphs before and 3 after match]
+
+    E --> F{SME Decision}
+
+    F --> |Agrees with primary agent| G[save_review:\nagrees_with_primary=True\nreview_notes, confidence score]
+
+    F --> |Disagrees - corrects classification| H[save_review:\nagrees_with_primary=False\ncorrections dict:\ncorrected_dominant_type\ncorrected_segments\ncorrected_document_mixture\ncorrection_notes]
+
+    G --> GT1[_create_ground_truth:\ngt_source = SME_VALIDATED\ngt_classification = primary agent output]
+
+    H --> GT2[_create_ground_truth:\ngt_source = SME_CORRECTED\ngt_classification = corrected output]
+
+    GT1 & GT2 --> SAVE[Save GroundTruthRecord:\noutput/ground_truth/gt_doc_id.json\nFields: doc_id, pdf info,\nproduction_classification,\nprimary_agent_classification,\nverification_report summary,\nsme_review, ground_truth_source,\nground_truth_classification]
+
+    SAVE --> UPD[Update SMEPacket:\nreview_status = COMPLETED\nupdated_at = now]
+
+    UPD --> DONE([Ground Truth Record Created\nReady for evaluation metrics])

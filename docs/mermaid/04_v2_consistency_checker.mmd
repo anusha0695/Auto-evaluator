@@ -1,0 +1,30 @@
+flowchart TD
+    IN([ClassificationOutput + DocumentBundle]) --> R1
+
+    subgraph Phase1["Phase 1: Rule-Based Pre-Filter (zero cost)"]
+        R1[Check: Segment shares sum to 1.0 plus or minus 0.01]
+        R1 --> |Fails| RE1[MAJOR auto_fixable: V2-xxxx\nShares do not sum to 1.0]
+        R1 --> R2
+
+        R2[Check: Overall mixture shares sum to 1.0 plus or minus 0.01]
+        R2 --> |Fails| RE2[MAJOR auto_fixable: V2-xxxx\nMixture shares wrong]
+        R2 --> R3
+
+        R3[Check: Page ranges\nNo overlaps, start <= end]
+        R3 --> |Overlap| RE3[BLOCKER: V2-xxxx\nSegment page overlap]
+        R3 --> |start > end| RE4[BLOCKER: V2-xxxx\nInverted range]
+    end
+
+    RE1 & RE2 & RE3 & RE4 --> BLK{Any BLOCKER in rules?}
+    BLK --> |Yes| SKIP[Skip LLM\nReturn score=0.0]
+    BLK --> |No| LLM
+
+    subgraph Phase2["Phase 2: LLM Semantic Validation"]
+        LLM[Build prompt:\nClassificationOutput JSON\n+ Full segment texts from DocumentBundle pages]
+        LLM --> CALL[Gemini API\ntemp=0.0, JSON mode]
+        CALL --> PARSE[Parse JSON array of issues]
+        PARSE --> LISSUES[LLM Issues: V2-LLM-xxxx]
+    end
+
+    SKIP & LISSUES --> SCORE[Compute consistency score\nBLOCKER=-0.4, MAJOR=-0.2, MINOR=-0.05]
+    SCORE --> OUT([issues + score 0.0 to 1.0])

@@ -1,0 +1,26 @@
+flowchart TD
+    IN([VerificationReport: All V1 to V4 issues]) --> COUNT
+
+    COUNT[Count issues by severity:\nblocker_count\nmajor_count, major_fixable, major_non_fixable\nminor_count]
+
+    COUNT --> R1{blocker_count > 0?}
+    R1 --> |Yes| ESC1([ESCALATE_TO_SME\nCritical failure - BLOCKER found])
+
+    R1 --> |No| R2{major_count >= 3?}
+    R2 --> |Yes| ESC2([ESCALATE_TO_SME\nToo many major errors])
+
+    R2 --> |No| R3{major_non_fixable >= 2?}
+    R3 --> |Yes| ESC3([ESCALATE_TO_SME\nRequires human judgment])
+
+    R3 --> |No| R4{major_non_fixable >= 1?}
+    R4 --> |Yes| ESC4([ESCALATE_TO_SME\nHuman expertise needed])
+
+    R4 --> |No| R5{1 <= major_fixable <= 2?}
+    R5 --> |Yes| RETRY([AUTO_RETRY\nApply fixes and re-verify])
+
+    R5 --> |No| R6{Only MINOR issues?}
+    R6 --> |Yes| ACC1([AUTO_ACCEPT\nTolerable minor issues only])
+
+    R6 --> |No| R7{No issues at all?}
+    R7 --> |Yes| ACC2([AUTO_ACCEPT\nPerfect output])
+    R7 --> |No| ESC5([ESCALATE_TO_SME\nAmbiguous pattern - safety fallback])

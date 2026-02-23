@@ -1,0 +1,161 @@
+{
+  "pdf_file": "doc_3.pdf",
+  "production_result": {
+    "dominant_type": "Genomic Report",
+    "all_types": [
+      "Genomic Report"
+    ],
+    "classifications": [
+      {
+        "document_type": "Genomic Report",
+        "confidence": 1.0,
+        "starting_page": 1
+      }
+    ],
+    "vendor": "Unknown"
+  },
+  "primary_agent_result": {
+    "dominant_type_overall": "Genomic Report",
+    "segments": [
+      {
+        "segment_index": 1,
+        "start_page": 1,
+        "end_page": 1,
+        "segment_page_count": 1,
+        "dominant_type": "Genomic Report",
+        "embedded_types": [],
+        "segment_composition": [
+          {
+            "document_type": "Clinical Note",
+            "presence_level": "NO_EVIDENCE",
+            "confidence": 0.0,
+            "segment_share": 0.0,
+            "top_evidence": [],
+            "reasoning": "No narrative, SOAP headers, visit types, or other clinical note structural elements are present."
+          },
+          {
+            "document_type": "Radiology Report",
+            "presence_level": "NO_EVIDENCE",
+            "confidence": 0.0,
+            "segment_share": 0.0,
+            "top_evidence": [],
+            "reasoning": "No imaging modalities, findings, or impression sections are present."
+          },
+          {
+            "document_type": "Pathology Report",
+            "presence_level": "NO_EVIDENCE",
+            "confidence": 0.0,
+            "segment_share": 0.0,
+            "top_evidence": [],
+            "reasoning": "The document lacks the 'Classic Triad' of a pathology report (Gross Description, Microscopic Examination, and a pathologist's signature for morphology). While 'Diagnosis Adenocarcinoma' is present, it's a summary, not part of a detailed pathology report structure."
+          },
+          {
+            "document_type": "Genomic Report",
+            "presence_level": "PRIMARY",
+            "confidence": 1.0,
+            "segment_share": 1.0,
+            "top_evidence": [
+              {
+                "page": 1,
+                "snippet": "Accession No. 4643\nGENOMIC VARIANTS\nSomatic - Potentially Actionable\nTumor Mutational Burden\nMicrosatellite Instability Status\nElectronically signed by Jennifer Walker\nCLIA number 14D2114007\nLaboratory Medical Director Dr. Robert Carter",
+                "anchors_found": [
+                  "Accession No.",
+                  "GENOMIC VARIANTS",
+                  "Tumor Mutational Burden",
+                  "Microsatellite Instability Status",
+                  "CLIA number",
+                  "Laboratory Medical Director"
+                ]
+              }
+            ],
+            "reasoning": "The document presents a clear structure of a genomic report with accession number, patient/sample details, detailed genomic variant tables (DNMT3A, STAT5B, CALR, BRCA1, BTK, XPC), immunotherapy markers (TMB, MSI), and a laboratory medical director's signature with CLIA number, and pipeline version."
+          },
+          {
+            "document_type": "Other",
+            "presence_level": "NO_EVIDENCE",
+            "confidence": 0.0,
+            "segment_share": 0.0,
+            "top_evidence": [],
+            "reasoning": "The document clearly fits the Genomic Report type and is not an administrative form or other non-clinical content."
+          }
+        ],
+        "notes": "This segment represents the entire document, which is a single, cohesive genomic report."
+      }
+    ],
+    "document_mixture": [
+      {
+        "document_type": "Clinical Note",
+        "presence_level": "NO_EVIDENCE",
+        "confidence": 0.0,
+        "overall_share": 0.0,
+        "overall_share_explanation": "No evidence of Clinical Note content was found in any segment.",
+        "top_evidence": [],
+        "reasoning": "No structural indicators or narrative content typical of a clinical note were identified throughout the document."
+      },
+      {
+        "document_type": "Radiology Report",
+        "presence_level": "NO_EVIDENCE",
+        "confidence": 0.0,
+        "overall_share": 0.0,
+        "overall_share_explanation": "No evidence of Radiology Report content was found in any segment.",
+        "top_evidence": [],
+        "reasoning": "The document does not contain any sections related to imaging modalities, findings, or impressions."
+      },
+      {
+        "document_type": "Pathology Report",
+        "presence_level": "NO_EVIDENCE",
+        "confidence": 0.0,
+        "overall_share": 0.0,
+        "overall_share_explanation": "No evidence of Pathology Report content was found in any segment.",
+        "top_evidence": [],
+        "reasoning": "The document lacks the characteristic 'Classic Triad' (Gross Description, Microscopic Examination, Pathologist signature for morphology) required for a Pathology Report."
+      },
+      {
+        "document_type": "Genomic Report",
+        "presence_level": "PRIMARY",
+        "confidence": 1.0,
+        "overall_share": 1.0,
+        "overall_share_explanation": "The entire document (1 page) is classified as a Genomic Report, contributing 100% to the overall content.",
+        "top_evidence": [
+          {
+            "page": 1,
+            "snippet": "Accession No. 4643\nGENOMIC VARIANTS\nSomatic - Potentially Actionable\nTumor Mutational Burden\nMicrosatellite Instability Status\nElectronically signed by Jennifer Walker\nCLIA number 14D2114007\nLaboratory Medical Director Dr. Robert Carter",
+            "anchors_found": [
+              "Accession No.",
+              "GENOMIC VARIANTS",
+              "Tumor Mutational Burden",
+              "Microsatellite Instability Status",
+              "CLIA number",
+              "Laboratory Medical Director"
+            ]
+          }
+        ],
+        "reasoning": "The document is a standalone genomic report, featuring detailed variant analysis, immunotherapy markers (TMB, MSI), and signed by a laboratory medical director with a CLIA number, indicating a complete and structurally sound genomic report."
+      },
+      {
+        "document_type": "Other",
+        "presence_level": "NO_EVIDENCE",
+        "confidence": 0.0,
+        "overall_share": 0.0,
+        "overall_share_explanation": "No evidence of 'Other' content was found in any segment.",
+        "top_evidence": [],
+        "reasoning": "The document's content is clearly defined as a Genomic Report and does not fall into the 'Other' category for administrative or non-clinical documents."
+      }
+    ],
+    "vendor_signals": [],
+    "number_of_segments": 1,
+    "self_evaluation": {
+      "evaluation_summary": "The document is a single-page, structurally complete Genomic Report. It contains all key anchors such as accession number, detailed genomic variant information, immunotherapy markers (TMB, MSI), CLIA number, and a laboratory medical director's signature. No other document types were identified as primary, embedded raw, or even mention-only. The segmentation is straightforward as it's a single, cohesive report. The dominant type overall is Genomic Report due to its exclusive presence and primary classification.",
+      "changes_made": "No changes were made during the self-correction phase as the initial classification was consistent with all rules and structural evidence. The document clearly and exclusively fits the Genomic Report criteria."
+    }
+  },
+  "comparison": {
+    "dominant_type_match": true,
+    "production_type": "Genomic Report",
+    "primary_agent_type": "Genomic Report",
+    "all_production_types": [
+      "Genomic Report"
+    ],
+    "primary_agent_segments": 1
+  }
+}

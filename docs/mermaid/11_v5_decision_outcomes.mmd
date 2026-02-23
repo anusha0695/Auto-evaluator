@@ -1,0 +1,4 @@
+flowchart LR
+    V5([V5 Arbiter]) --> A1[AUTO_ACCEPT\nNo issues or only MINOR issues\nClassification is final ground truth]
+    V5 --> A2[AUTO_RETRY\n1 to 2 fixable MAJOR issues\nAutoFixEngine applies fixes\nthen re-verifies, max 2 attempts]
+    V5 --> A3[ESCALATE_TO_SME\nAny BLOCKER issue found\nor 3 or more MAJOR issues\nor any non-fixable MAJOR issue\nSME Packet is generated]

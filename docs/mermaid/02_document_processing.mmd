@@ -1,0 +1,17 @@
+flowchart TD
+    A([PDF File]) --> B[Read binary content]
+    B --> C[Google Cloud Document AI\nLayout Parser Processor]
+    C --> D{documentLayout\nblocks present?}
+
+    D --> |Yes| E[_process_blocks_recursively]
+    E --> F{Block type?}
+    F --> |text_block| G[Extract text + block_type\nAppend to page paragraphs]
+    F --> |table_block| H[Set has_tables=True\nRecurse into cells]
+    G & H --> I{Has nested sub-blocks?}
+    I --> |Yes| E
+    I --> |No| J[Accumulate pages_dict by page_num]
+
+    D --> |No| K[_extract_pages_legacy\nOCR fallback]
+    K --> J
+
+    J --> L[(DocumentBundle\ndoc_id, file_path,\ntotal_pages, pages list,\nprocessing_timestamp)]

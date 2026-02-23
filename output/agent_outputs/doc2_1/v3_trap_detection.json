@@ -1,0 +1,11 @@
+{
+  "agent": "v3_trap_detection",
+  "doc_id": "doc2_1",
+  "timestamp": "2026-02-23T17:41:26.526385",
+  "issues_count": 0,
+  "issues": [],
+  "score": null,
+  "metadata": {
+    "traps_triggered": 0
+  }
+}

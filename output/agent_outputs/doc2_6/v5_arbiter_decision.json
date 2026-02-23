@@ -1,0 +1,8 @@
+{
+  "agent": "v5_arbiter",
+  "doc_id": "doc2_6",
+  "timestamp": "2026-02-17T03:14:16.710471",
+  "decision": "ESCALATE_TO_SME",
+  "reasoning": "Found 1 non-fixable MAJOR issue(s). Human expertise needed to resolve.",
+  "metadata": {}
+}
