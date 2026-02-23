@@ -1,0 +1,20 @@
+flowchart TD
+    A([📄 Input PDF]) --> B[DocumentProcessor\nGoogle Cloud Document AI]
+    B --> C[(DocumentBundle\npages + layout metadata)]
+    C --> D[Primary Classifier Agent\nGemini LLM]
+    D --> E[(ClassificationOutput\nsegments + evidence + mixture)]
+    E & C --> F[RetryOrchestrator]
+
+    F --> G[VerificationRunner\nV1 → V2 → V3 → V4]
+    G --> H[V5 Arbiter\nRule-based decision]
+
+    H --> |AUTO_ACCEPT| I([✅ Final Classification\nGround Truth: PRIMARY_AGENT_AUTO_ACCEPT])
+    H --> |AUTO_RETRY| J[AutoFixEngine\nApply fixable issues]
+    J --> |Re-verify max 2 retries| G
+    J --> |Cycle detected or max retries| K
+    H --> |ESCALATE_TO_SME| K[SMEPacketGenerator]
+
+    K --> L[(SME Packet JSON\noutput/sme_packets/)]
+    L --> M[SME Review Interface\nJupyter Notebook]
+    M --> |Agrees with primary| N([✅ Ground Truth\nSME_VALIDATED])
+    M --> |Corrects classification| O([✅ Ground Truth\nSME_CORRECTED])

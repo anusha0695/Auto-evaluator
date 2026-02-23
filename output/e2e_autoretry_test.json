@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-02-16T17:43:22.775481",
+  "test": "end_to_end_autoretry",
+  "classification_id": "custom-test-001",
+  "initial_share_sum": 0.95,
+  "final_share_sum": 1.03,
+  "retry_attempts": 0,
+  "fixes_applied": 0,
+  "final_decision": "ESCALATE_TO_SME",
+  "validations": [
+    "\u274c No retry occurred",
+    "\u274c Shares not normalized (1.030000)",
+    "\u2705 Final decision: ESCALATE_TO_SME",
+    "\u274c No fixes applied"
+  ],
+  "test_passed": false,
+  "retry_log": [],
+  "final_issues": 6
+}

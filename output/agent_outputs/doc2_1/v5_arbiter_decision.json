@@ -1,0 +1,8 @@
+{
+  "agent": "v5_arbiter",
+  "doc_id": "doc2_1",
+  "timestamp": "2026-02-23T17:41:42.796649",
+  "decision": "AUTO_ACCEPT",
+  "reasoning": "Found only 3 MINOR issue(s). Issues are tolerable and do not affect classification validity.",
+  "metadata": {}
+}

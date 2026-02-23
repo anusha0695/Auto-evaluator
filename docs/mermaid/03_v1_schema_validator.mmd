@@ -1,0 +1,26 @@
+flowchart TD
+    IN([ClassificationOutput + DocumentBundle]) --> C1
+
+    C1[Check 1: Segment Count\nnumber_of_segments == len segments?]
+    C1 --> |Mismatch| E1[BLOCKER: V1-xxxx\nSegment count mismatch]
+    C1 --> C2
+
+    C2[Check 2: Page Bounds\nAll start_page and end_page\nwithin 1..total_pages?]
+    C2 --> |Out of range| E2[BLOCKER: V1-xxxx\nPage out of range]
+    C2 --> |start > end| E3[BLOCKER: V1-xxxx\nInverted page range]
+    C2 --> |page_count wrong| E4[MAJOR auto_fixable: V1-xxxx\nWrong segment_page_count]
+    C2 --> C3
+
+    C3[Check 3: Confidence Ranges\nAll confidence in 0.0..1.0?]
+    C3 --> |Out of range| E5[BLOCKER: V1-xxxx\nConfidence out of range]
+    C3 --> C4
+
+    C4[Check 4: Completeness\nAll 5 DocumentTypes present\nin each segment + mixture?]
+    C4 --> |Missing types| E6[BLOCKER auto_fixable: V1-xxxx\nMissing document types]
+    C4 --> |Extra types| E7[BLOCKER auto_fixable: V1-xxxx\nDuplicate document types]
+    C4 --> C5
+
+    C5[Check 5: Evidence Alignment\npresence_level != NO_EVIDENCE\nbut no evidence provided?]
+    C5 --> |No evidence| E8[MINOR: V1-xxxx\nMissing evidence snippets]
+
+    E1 & E2 & E3 & E4 & E5 & E6 & E7 & E8 --> OUT([List of Issues])

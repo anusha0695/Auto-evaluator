@@ -1,0 +1,157 @@
+{
+  "doc_id": "doc2_1",
+  "timestamp": "2026-02-23T17:41:06.207680",
+  "classification": {
+    "dominant_type_overall": "Genomic Report",
+    "segments": [
+      {
+        "segment_index": 1,
+        "start_page": 1,
+        "end_page": 5,
+        "segment_page_count": 5,
+        "dominant_type": "Genomic Report",
+        "embedded_types": [
+          "Pathology Report"
+        ],
+        "segment_composition": [
+          {
+            "document_type": "Clinical Note",
+            "presence_level": "NO_EVIDENCE",
+            "confidence": 0.0,
+            "segment_share": 0.0,
+            "top_evidence": [],
+            "reasoning": "No clinical note specific headers (SOAP, HPI, CC, ROS) or narrative structure found in this segment."
+          },
+          {
+            "document_type": "Radiology Report",
+            "presence_level": "NO_EVIDENCE",
+            "confidence": 0.0,
+            "segment_share": 0.0,
+            "top_evidence": [],
+            "reasoning": "No imaging modalities, findings, or impression sections indicative of a radiology report."
+          },
+          {
+            "document_type": "Pathology Report",
+            "presence_level": "EMBEDDED_RAW",
+            "confidence": 0.9,
+            "segment_share": 0.2,
+            "top_evidence": [
+              {
+                "page": 4,
+                "snippet": "Gross Description: 3372 Left breast, central, 12:00, suspicious mass, 12-gauge core needle biopsy: Infiltrating moderately-differentiated mammary carcinoma, grade 2, Nottingham score 6 (architectural grade 3, nuclear grade 2, mitotic figures 1). Pathological Diagnosis:",
+                "anchors_found": [
+                  "Gross Description",
+                  "Pathological Diagnosis"
+                ]
+              }
+            ],
+            "reasoning": "Page 4 contains a distinct 'Gross Description' and 'Pathological Diagnosis' section, which are key structural elements of a pathology report. This is embedded within a larger comprehensive genomic report."
+          },
+          {
+            "document_type": "Genomic Report",
+            "presence_level": "PRIMARY",
+            "confidence": 1.0,
+            "segment_share": 0.8,
+            "top_evidence": [
+              {
+                "page": 2,
+                "snippet": "Genomic Signatures BioMarker Method Analyte Result Microsatellite instability Seq DNA tumor High Tumor mutational burden Seq DNA tumor 11 mutations/Mb Low Genomic loss of heterozygosity (LOH) Seq DNA tumor High - 34% of tested genmoic segments exhibit LOH Genes Tested with Pathogenic Alterations or likely Pathogenic Alterations",
+                "anchors_found": [
+                  "Genomic Signatures",
+                  "Microsatellite instability",
+                  "Tumor mutational burden",
+                  "Genomic loss of heterozygosity (LOH)",
+                  "Genes Tested with Pathogenic Alterations"
+                ]
+              }
+            ],
+            "reasoning": "The majority of the document (pages 1-3, 5) presents extensive genomic data including TMB, MSI, LOH, NGS methodology, and detailed gene variant tables, indicating a comprehensive genomic analysis. This is the primary content type, with pathology embedded."
+          },
+          {
+            "document_type": "Other",
+            "presence_level": "NO_EVIDENCE",
+            "confidence": 0.0,
+            "segment_share": 0.0,
+            "top_evidence": [],
+            "reasoning": "No administrative forms, requisitions, or other non-clinical content found."
+          }
+        ],
+        "notes": "This segment represents a single, comprehensive laboratory report that primarily focuses on genomic analysis but also includes a distinct pathology section."
+      }
+    ],
+    "document_mixture": [
+      {
+        "document_type": "Clinical Note",
+        "presence_level": "NO_EVIDENCE",
+        "confidence": 0.0,
+        "overall_share": 0.0,
+        "overall_share_explanation": "No evidence of Clinical Note content across any segments.",
+        "top_evidence": [],
+        "reasoning": "No clinical note specific headers (SOAP, HPI, CC, ROS) or narrative structure found anywhere in the document."
+      },
+      {
+        "document_type": "Radiology Report",
+        "presence_level": "NO_EVIDENCE",
+        "confidence": 0.0,
+        "overall_share": 0.0,
+        "overall_share_explanation": "No evidence of Radiology Report content across any segments.",
+        "top_evidence": [],
+        "reasoning": "No imaging modalities, findings, or impression sections indicative of a radiology report found anywhere in the document."
+      },
+      {
+        "document_type": "Pathology Report",
+        "presence_level": "EMBEDDED_RAW",
+        "confidence": 0.9,
+        "overall_share": 0.2,
+        "overall_share_explanation": "Pathology Report content constitutes 20% of the document, derived from its 0.2 segment share over 5 pages.",
+        "top_evidence": [
+          {
+            "page": 4,
+            "snippet": "Gross Description: 3372 Left breast, central, 12:00, suspicious mass, 12-gauge core needle biopsy: Infiltrating moderately-differentiated mammary carcinoma, grade 2, Nottingham score 6 (architectural grade 3, nuclear grade 2, mitotic figures 1). Pathological Diagnosis:",
+            "anchors_found": [
+              "Gross Description",
+              "Pathological Diagnosis"
+            ]
+          }
+        ],
+        "reasoning": "A distinct 'Gross Description' and 'Pathological Diagnosis' section is present on page 4, formatted as a raw report block embedded within the larger comprehensive report."
+      },
+      {
+        "document_type": "Genomic Report",
+        "presence_level": "PRIMARY",
+        "confidence": 1.0,
+        "overall_share": 0.8,
+        "overall_share_explanation": "Genomic Report content constitutes 80% of the document, derived from its 0.8 segment share over 5 pages.",
+        "top_evidence": [
+          {
+            "page": 2,
+            "snippet": "Genomic Signatures BioMarker Method Analyte Result Microsatellite instability Seq DNA tumor High Tumor mutational burden Seq DNA tumor 11 mutations/Mb Low Genomic loss of heterozygosity (LOH) Seq DNA tumor High - 34% of tested genmoic segments exhibit LOH Genes Tested with Pathogenic Alterations or likely Pathogenic Alterations",
+            "anchors_found": [
+              "Genomic Signatures",
+              "Microsatellite instability",
+              "Tumor mutational burden",
+              "Genomic loss of heterozygosity (LOH)",
+              "Genes Tested with Pathogenic Alterations"
+            ]
+          }
+        ],
+        "reasoning": "The document is primarily a comprehensive genomic report, featuring extensive sections on genomic signatures (TMB, MSI, LOH), gene variant analysis, and NGS methodology across multiple pages, indicating a standalone and structurally complete report."
+      },
+      {
+        "document_type": "Other",
+        "presence_level": "NO_EVIDENCE",
+        "confidence": 0.0,
+        "overall_share": 0.0,
+        "overall_share_explanation": "No evidence of 'Other' content across any segments.",
+        "top_evidence": [],
+        "reasoning": "No administrative forms, requisitions, or other non-clinical content found anywhere in the document."
+      }
+    ],
+    "vendor_signals": [],
+    "number_of_segments": 1,
+    "self_evaluation": {
+      "evaluation_summary": "The document is classified as a single segment representing a comprehensive laboratory report. The primary content is Genomic Report due to extensive NGS, TMB, MSI, LOH, and gene variant data spanning most pages. A distinct 'Gross Description' and 'Pathological Diagnosis' section on page 4 qualifies as an EMBEDDED_RAW Pathology Report. The dominant_type_overall is 'Genomic Report' because it has a higher overall share and a PRIMARY presence level, giving it a significantly higher dominance score compared to the EMBEDDED_RAW Pathology Report. No Clinical Note, Radiology Report, or Other content was identified.",
+      "changes_made": "No significant reclassifications or share adjustments were needed during the process, as the initial assessment aligned with the classification rules, particularly the rule for comprehensive assays where Genomic is PRIMARY and Pathology is EMBEDDED_RAW if both are present."
+    }
+  }
+}

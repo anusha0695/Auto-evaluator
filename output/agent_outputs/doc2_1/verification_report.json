@@ -1,0 +1,57 @@
+{
+  "doc_id": "doc2_1",
+  "timestamp": "2026-02-23T17:41:42.797323",
+  "report": {
+    "issues": [
+      {
+        "ig_id": "IG-3",
+        "issue_id": "V4-0001",
+        "agent": "V4",
+        "severity": "MINOR",
+        "message": "Top evidence snippet for Pathology Report in segment 1 is 49 words long, exceeding the ideal length of \u2264 30 words. While relevant, it could be more concise.",
+        "location": {
+          "segment_index": 1,
+          "document_type": "Pathology Report",
+          "field": "top_evidence"
+        },
+        "suggested_fix": "Trim the snippet to focus on the most critical indicators, such as 'Gross Description: ... Pathological Diagnosis:' without excessive detail.",
+        "auto_fixable": true
+      },
+      {
+        "ig_id": "IG-3",
+        "issue_id": "V4-0002",
+        "agent": "V4",
+        "severity": "MINOR",
+        "message": "Confidence of 0.9 for EMBEDDED_RAW Pathology Report in segment 1 is slightly above the typical cap of ~0.89 for embedded types, suggesting a minor overestimation.",
+        "location": {
+          "segment_index": 1,
+          "document_type": "Pathology Report",
+          "field": "confidence"
+        },
+        "suggested_fix": "Adjust confidence to be at or below 0.89 for EMBEDDED_RAW presence levels, or re-evaluate if the evidence truly warrants a higher confidence (e.g., if it's borderline PRIMARY).",
+        "auto_fixable": true
+      },
+      {
+        "ig_id": "IG-3",
+        "issue_id": "V4-0003",
+        "agent": "V4",
+        "severity": "MINOR",
+        "message": "Top evidence snippet for Genomic Report in segment 1 is 60 words long, significantly exceeding the ideal length of \u2264 30 words. While highly relevant, it could be more concise.",
+        "location": {
+          "segment_index": 1,
+          "document_type": "Genomic Report",
+          "field": "top_evidence"
+        },
+        "suggested_fix": "Trim the snippet to focus on the most critical indicators, such as 'Genomic Signatures BioMarker Method Analyte Result Microsatellite instability Seq DNA tumor High Tumor mutational burden...'",
+        "auto_fixable": true
+      }
+    ],
+    "v1_validation_passed": true,
+    "v2_consistency_score": 1.0,
+    "v3_traps_triggered": 0,
+    "v4_evidence_quality_score": 0.85,
+    "has_blocker_issues": false,
+    "total_issues": 3,
+    "llm_calls_made": 2
+  }
+}

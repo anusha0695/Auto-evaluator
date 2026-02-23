@@ -1,0 +1,220 @@
+{
+  "dominant_type_overall": "Genomic Report",
+  "segments": [
+    {
+      "segment_index": 1,
+      "start_page": 1,
+      "end_page": 4,
+      "segment_page_count": 4,
+      "dominant_type": "Genomic Report",
+      "embedded_types": [
+        "Pathology Report"
+      ],
+      "segment_composition": [
+        {
+          "document_type": "Clinical Note",
+          "presence_level": "NO_EVIDENCE",
+          "confidence": 0.0,
+          "segment_share": 0.0,
+          "top_evidence": [],
+          "reasoning": "No clinical note specific headers (HPI, SOAP, visit types) or narrative language were found in this segment."
+        },
+        {
+          "document_type": "Radiology Report",
+          "presence_level": "NO_EVIDENCE",
+          "confidence": 0.0,
+          "segment_share": 0.0,
+          "top_evidence": [],
+          "reasoning": "No imaging modalities, findings, or impression sections indicative of a radiology report were found."
+        },
+        {
+          "document_type": "Pathology Report",
+          "presence_level": "EMBEDDED_RAW",
+          "confidence": 0.8,
+          "segment_share": 0.2,
+          "top_evidence": [
+            {
+              "page": 3,
+              "snippet": "Immunohistochemistry Results",
+              "anchors_found": [
+                "Immunohistochemistry Results"
+              ]
+            }
+          ],
+          "reasoning": "The presence of 'Immunohistochemistry Results' on page 3 indicates an embedded raw pathology component within a broader genomic report context, consistent with comprehensive assay overlap rules."
+        },
+        {
+          "document_type": "Genomic Report",
+          "presence_level": "PRIMARY",
+          "confidence": 0.95,
+          "segment_share": 0.7,
+          "top_evidence": [
+            {
+              "page": 2,
+              "snippet": "Genomic Signatures\nGenes Tested with Pathogenic Alterations or likely Pathogenic Alterations",
+              "anchors_found": [
+                "Genomic Signatures",
+                "Genes Tested with Pathogenic Alterations"
+              ]
+            }
+          ],
+          "reasoning": "Pages 2 and 3 contain strong structural anchors for a Genomic Report, including 'Genomic Signatures', 'Genes Tested with Pathogenic Alterations', and 'Gene Variants of Unknown Significance', indicating a primary genomic analysis."
+        },
+        {
+          "document_type": "Other",
+          "presence_level": "MENTION_ONLY",
+          "confidence": 0.4,
+          "segment_share": 0.1,
+          "top_evidence": [
+            {
+              "page": 1,
+              "snippet": "Specimen Information",
+              "anchors_found": [
+                "Specimen Information"
+              ]
+            }
+          ],
+          "reasoning": "Pages 1 and 4 contain 'Specimen Information' which, while part of a lab report, are more administrative/contextual rather than core clinical content, thus classified as mention-only 'Other' within this segment."
+        }
+      ],
+      "notes": "This segment primarily contains a Genomic Report with embedded Immunohistochemistry results, consistent with a comprehensive genomic assay. Pages 1 and 4 provide administrative 'Specimen Information'."
+    },
+    {
+      "segment_index": 2,
+      "start_page": 5,
+      "end_page": 5,
+      "segment_page_count": 1,
+      "dominant_type": "Other",
+      "embedded_types": [],
+      "segment_composition": [
+        {
+          "document_type": "Clinical Note",
+          "presence_level": "NO_EVIDENCE",
+          "confidence": 0.0,
+          "segment_share": 0.0,
+          "top_evidence": [],
+          "reasoning": "No clinical note specific headers or narrative language were found on this page."
+        },
+        {
+          "document_type": "Radiology Report",
+          "presence_level": "NO_EVIDENCE",
+          "confidence": 0.0,
+          "segment_share": 0.0,
+          "top_evidence": [],
+          "reasoning": "No imaging modalities, findings, or impression sections indicative of a radiology report were found."
+        },
+        {
+          "document_type": "Pathology Report",
+          "presence_level": "NO_EVIDENCE",
+          "confidence": 0.0,
+          "segment_share": 0.0,
+          "top_evidence": [],
+          "reasoning": "No pathology specific content (gross, microscopic, diagnosis, IHC) was found on this page."
+        },
+        {
+          "document_type": "Genomic Report",
+          "presence_level": "NO_EVIDENCE",
+          "confidence": 0.0,
+          "segment_share": 0.0,
+          "top_evidence": [],
+          "reasoning": "No genomic sequencing results, variants, or methodology were found on this page."
+        },
+        {
+          "document_type": "Other",
+          "presence_level": "PRIMARY",
+          "confidence": 0.9,
+          "segment_share": 1.0,
+          "top_evidence": [
+            {
+              "page": 5,
+              "snippet": "Clinical Trials Connector",
+              "anchors_found": [
+                "Clinical Trials Connector"
+              ]
+            }
+          ],
+          "reasoning": "The page content 'Clinical Trials Connector' is clearly an administrative or informational artifact, not fitting into any other clinical document type, making it a primary 'Other' document."
+        }
+      ],
+      "notes": "This segment consists of a single page identified as an 'Other' document due to its administrative/informational nature."
+    }
+  ],
+  "document_mixture": [
+    {
+      "document_type": "Clinical Note",
+      "presence_level": "NO_EVIDENCE",
+      "confidence": 0.0,
+      "overall_share": 0.0,
+      "overall_share_explanation": "No evidence of Clinical Note content was found across any segments of the document.",
+      "top_evidence": [],
+      "reasoning": "The document does not contain any structural indicators or narrative content typical of a Clinical Note."
+    },
+    {
+      "document_type": "Radiology Report",
+      "presence_level": "NO_EVIDENCE",
+      "confidence": 0.0,
+      "overall_share": 0.0,
+      "overall_share_explanation": "No evidence of Radiology Report content was found across any segments of the document.",
+      "top_evidence": [],
+      "reasoning": "The document does not contain any imaging modalities, findings, or impression sections."
+    },
+    {
+      "document_type": "Pathology Report",
+      "presence_level": "EMBEDDED_RAW",
+      "confidence": 0.8,
+      "overall_share": 0.16,
+      "overall_share_explanation": "Calculated as (segment 1 share * segment 1 page count) / total pages = (0.2 * 4) / 5 = 0.16.",
+      "top_evidence": [
+        {
+          "page": 3,
+          "snippet": "Immunohistochemistry Results",
+          "anchors_found": [
+            "Immunohistochemistry Results"
+          ]
+        }
+      ],
+      "reasoning": "A distinct 'Immunohistochemistry Results' section is present on page 3, embedded within a larger genomic report, indicating raw pathology data."
+    },
+    {
+      "document_type": "Genomic Report",
+      "presence_level": "PRIMARY",
+      "confidence": 0.95,
+      "overall_share": 0.56,
+      "overall_share_explanation": "Calculated as (segment 1 share * segment 1 page count) / total pages = (0.7 * 4) / 5 = 0.56.",
+      "top_evidence": [
+        {
+          "page": 2,
+          "snippet": "Genomic Signatures\nGenes Tested with Pathogenic Alterations or likely Pathogenic Alterations",
+          "anchors_found": [
+            "Genomic Signatures",
+            "Genes Tested with Pathogenic Alterations"
+          ]
+        }
+      ],
+      "reasoning": "Pages 2 and 3 contain strong and multiple structural anchors for a Genomic Report, including 'Genomic Signatures', 'Genes Tested with Pathogenic Alterations', and 'Gene Variants of Unknown Significance', establishing it as a primary document type."
+    },
+    {
+      "document_type": "Other",
+      "presence_level": "PRIMARY",
+      "confidence": 0.9,
+      "overall_share": 0.28,
+      "overall_share_explanation": "Calculated as ((segment 1 share * segment 1 page count) + (segment 2 share * segment 2 page count)) / total pages = ((0.1 * 4) + (1.0 * 1)) / 5 = (0.4 + 1.0) / 5 = 1.4 / 5 = 0.28.",
+      "top_evidence": [
+        {
+          "page": 5,
+          "snippet": "Clinical Trials Connector",
+          "anchors_found": [
+            "Clinical Trials Connector"
+          ]
+        }
+      ],
+      "reasoning": "Page 5 is a standalone 'Clinical Trials Connector' page, which is administrative/informational, classifying it as a primary 'Other' document. Additionally, 'Specimen Information' on pages 1 and 4 contributes a small mention-only share."
+    }
+  ],
+  "vendor_signals": [],
+  "number_of_segments": 2,
+  "self_evaluation": {
+    "evaluation_summary": "The document is segmented into two parts: pages 1-4 primarily constitute a Genomic Report with embedded Pathology (IHC), and page 5 is classified as 'Other'. The Genomic Report is dominant due to its significant page coverage and primary presence level, outweighing the embedded Pathology and the 'Other' administrative page.",
+    "changes_made": "No significant reclassifications or share adjustments were needed during the final review, as the initial analysis aligned with the classification rules and schema."
+  }
+}

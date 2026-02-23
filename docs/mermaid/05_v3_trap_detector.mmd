@@ -1,0 +1,26 @@
+flowchart TD
+    IN([ClassificationOutput + DocumentBundle]) --> FT[Combine all page texts into full_text string]
+    FT --> T1
+
+    subgraph Phase1["Phase 1: Rule-Based Trap Detection"]
+        T1[Trap 1: Routine Lab Vendor + Genomic PRIMARY?\nQuest or LabCorp in vendor_signals?]
+        T1 --> |Yes| TE1[BLOCKER: V3-xxxx\nRoutine vendor does not match Genomic PRIMARY]
+        T1 --> T2
+
+        T2[Trap 2: Admin Keywords + Report Classification?\nrequisition or fax cover or authorization in text?]
+        T2 --> |Yes| TE2[BLOCKER: V3-xxxx\nAdmin doc misclassified as report]
+        T2 --> T3
+
+        T3[Trap 3: Header or Footer Content in Evidence\npage X of Y or fax number or MRN or DOB patterns?]
+        T3 --> |Match| TE3[MINOR: V3-xxxx\nHeader or footer content in evidence snippet]
+    end
+
+    TE1 & TE2 & TE3 --> LLM
+
+    subgraph Phase2["Phase 2: LLM Contextual Analysis"]
+        LLM[Build prompt:\nClassificationOutput JSON\n+ first 4000 chars of document text]
+        LLM --> CALL[Gemini API\ntemp=0.0, JSON mode]
+        CALL --> LISSUES[LLM Trap Issues: V3-LLM-xxxx]
+    end
+
+    LISSUES --> OUT([issues + traps_triggered count])

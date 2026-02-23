@@ -1,0 +1,21 @@
+flowchart TD
+    IN([ClassificationOutput + DocumentBundle]) --> INIT[attempt=0\nseen_fingerprints=empty set]
+
+    INIT --> VER[VerificationRunner.run_all\nV1 to V2 to V3 to V4 to V5]
+    VER --> FP{Fingerprint already seen?\nMD5 hash of classification structure}
+
+    FP --> |Yes - cycle detected| CYC([ESCALATE_TO_SME\nCycle detected in auto-fix loop])
+
+    FP --> |No| ADD[Add fingerprint to seen set]
+    ADD --> DEC{V5 Decision?}
+
+    DEC --> |AUTO_ACCEPT| DONE([Return final result\nClassification accepted])
+    DEC --> |ESCALATE_TO_SME| DONE2([Return escalation result])
+
+    DEC --> |AUTO_RETRY| MAX{attempt >= MAX_RETRIES=2?}
+    MAX --> |Yes| MAXESC([ESCALATE_TO_SME\nMax retries reached])
+
+    MAX --> |No| FIX[AutoFixEngine.apply_fixes\nFilter auto_fixable issues\nApply share normalization fixes]
+    FIX --> LOG[Log retry entry:\nattempt number, issues before fix,\nfixes applied list]
+    LOG --> INC[attempt += 1]
+    INC --> VER

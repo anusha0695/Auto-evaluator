@@ -1,0 +1,23 @@
+#!/bin/bash
+# Setup script for Phase 1
+
+echo "Phase 1 Setup - Document AI Processor Creation"
+echo "================================================"
+echo ""
+echo "Since the gcloud CLI doesn't have Document AI in alpha commands,"
+echo "we'll create the processor via the GCP Console."
+echo ""
+echo "Steps:"
+echo "1. Go to: https://console.cloud.google.com/ai/document-ai/processors"
+echo "2. Click 'CREATE PROCESSOR'"
+echo "3. Select 'Document OCR' or 'Layout Parser'"
+echo "4. Name: 'Clinical Document Parser'"
+echo "5. Region: 'us' (United States)"
+echo "6. Click 'CREATE'"
+echo "7. Copy the Processor ID from the URL (looks like: 1234567890abcdef)"
+echo ""
+echo "Once you have the Processor ID, update .env file:"
+echo "  DOCUMENT_AI_PROCESSOR_ID=YOUR_PROCESSOR_ID"
+echo ""
+echo "Then run:"
+echo "  ./venv_new/bin/python run_classification.py data/input/raw_documents/doc2_1.pdf"
